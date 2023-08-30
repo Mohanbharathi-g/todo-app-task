@@ -1,0 +1,72 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+:root {
+  /* primary */
+  --clr-Bright-Blue: #3a7bfd;
+  --clr-Check-Background: linear-gradient hsl(192, 100%, 67%) to
+    hsl(280, 87%, 65%);
+
+  /* light bg */
+  --clr-Very-Light-Gray: #fafafa;
+  --clr-Very-Light-Grayish-Blue: #e4e5f1;
+  --clr-Light-Grayish-Blue: #d2d3db;
+  --clr-Dark-Grayish-Blue: #9394a5;
+  --clr-Very-Dark-Grayish-Blue: #484b6a;
+
+  /* dark bg */
+  --clr-Very-Dark-Blue: #161722;
+  --clr-Very-Dark-Desaturated-Blue: #25273c;
+  --clr-Light-Grayish-Blue: #cacde8;
+  --clr-Light-Grayish-Blue-hover: #e4e5f1;
+  --clr-Dark-Grayish-Blue: #777a92;
+  --clr-Very-Dark-Grayish-Blue: #4d5066;
+  --clr-Very-Dark-Grayish-Blue: #393a4c;
+  --box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25),
+    -2px -2px 2px rgba(0, 0, 0, 0.25);
+    --clr-font-family: "Josefin Sans", sans-serif;
+}
+body{
+  font-family: "Josefin Sans", sans-serif;
+
+}
+
+.app,input,button{
+  font-family: "Josefin Sans", sans-serif;
+}
+
+input:checked{
+  background-color: var(--clr-Check-Background);
+}
+.pagination{
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  gap: 20px;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.pagination li{
+  list-style: none;
+  padding: 10px 15px;
+  background-color: #25273c;
+  border-radius: 50%;
+
+}
+
+.pagination li:hover{
+  transform: scale(1.2);
+  transition: 0.2s all;
+}
+&.selected{
+  background-color: #d2d3db;
+  color: #161722;
+}
+/* table,tr,td{
+  width: auto;
+  border:'1px solid #fff'
+} */
