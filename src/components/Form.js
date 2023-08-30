@@ -105,7 +105,7 @@ const Form = () => {
     }
 
     dispatch(setIsLoading(false));
-  }, []);
+  }, [dispatch]);
 
   // console.log(todos)
   return (
