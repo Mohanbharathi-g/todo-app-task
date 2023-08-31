@@ -50,9 +50,9 @@ const FilterList = () => {
     dispatch(setTodos(pendingItems));
   };
   // this function used to clear the task locally.
-  const handleClear = async () => {
-    dispatch(setTodos([]));
-  };
+  // const handleClear = async () => {
+  //   dispatch(setTodos([]));
+  // };
 
   // useEffect(()=>{
   //   console.log('filterItems',filterItems)
