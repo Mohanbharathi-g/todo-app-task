@@ -70,7 +70,7 @@ const FilterList = () => {
   return (
     <Stack
       direction={'row'}
-      justifyContent={'space-between'}
+      justifyContent={'center'}
       alignItems={'center'}
       margin={'auto'}
       width={'500px'}
@@ -84,7 +84,12 @@ const FilterList = () => {
         height: 'auto',
       }}
     >
-      <Stack direction={'row'} spacing={4}>
+      <Stack
+        direction={'row'}
+        spacing={4}
+        alignItems={'center'}
+        justifyContent={'space-between'}
+      >
         {buttonList.map((button) => {
           return (
             <Button
@@ -108,8 +113,8 @@ const FilterList = () => {
           );
         })}
       </Stack>
-      <Stack>
-        <Button
+
+      {/* <Button
           onClick={handleClear}
           sx={{
             borderRadius: '0',
@@ -120,8 +125,7 @@ const FilterList = () => {
           }}
         >
           Clear All
-        </Button>
-      </Stack>
+        </Button> */}
     </Stack>
   );
 };

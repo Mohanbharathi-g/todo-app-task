@@ -90,6 +90,10 @@ const Confirm = () => {
                 color: '#fff',
                 borderRadius: '8px',
                 cursor: 'pointer',
+                textTransform: 'capitalize',
+                '&hover': {
+                  border: '1px solid #fff',
+                },
               }}
               onClick={() => handleSubmit('cancel')}
             >
