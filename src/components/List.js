@@ -125,7 +125,6 @@ const List = ({ currentItems }) => {
                           color: '#fff',
                           backgroundColor: 'transparent',
                         }}
-                        inputProps={{ 'aria-label': 'controlled' }}
                       />
                       <Typography
                         variant='body1'
