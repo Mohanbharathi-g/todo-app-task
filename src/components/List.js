@@ -6,7 +6,6 @@ import {
   setIsConfirm,
   setDeleteId,
   setTostifySuccess,
-  setTostifyError,
 } from '../app/todoSlice';
 import { useDispatch } from 'react-redux';
 
