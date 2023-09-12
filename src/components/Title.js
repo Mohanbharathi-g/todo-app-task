@@ -20,7 +20,7 @@ const Title = () => {
 
   // functions
   const handleOpen = () => {
-    console.log('hiii');
+    // console.log('hiii');
     dispatch(setIsOpen(!isOpen));
   };
 
@@ -31,10 +31,10 @@ const Title = () => {
 
   const handleComplete = () => {
     //  setFilterItems(todos)
-    console.log(filterItems);
+    // console.log(filterItems);
     const completeItem = filterItems.filter((todo) => todo.isComplete === true);
 
-    console.log(completeItem);
+    // console.log(completeItem);
 
     dispatch(setTodos(completeItem));
     dispatch(setIsOpen(false));

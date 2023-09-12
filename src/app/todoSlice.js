@@ -26,7 +26,7 @@ const todoSlice = createSlice({
       state.title = action.payload;
     },
     setTodos: (state, action) => {
-      console.log(action.payload);
+      // console.log(action.payload);
 
       state.todos = action.payload;
     },
@@ -37,21 +37,21 @@ const todoSlice = createSlice({
       state.editId = action.payload;
     },
     setFilterItems: (state, action) => {
-      console.log(action.payload);
+      // console.log(action.payload);
       state.fiterItems = action.payload;
     },
     setActive: (state, action) => {
       state.active = action.payload;
     },
     setIsOpen: (state, action) => {
-      console.log(action.payload);
+      // console.log(action.payload);
       state.isOpen = action.payload;
     },
     setItemOff: (state, action) => {
       state.itemoff = action.payload;
     },
     setIsConfirm: (state, action) => {
-      console.log(action.payload);
+      // console.log(action.payload);
       state.isConfirm = action.payload;
     },
     setDeleteId: (state, action) => {

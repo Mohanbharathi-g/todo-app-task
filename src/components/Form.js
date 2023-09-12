@@ -58,7 +58,7 @@ const Form = () => {
       dispatch(setIsEditing(false));
       dispatch(setTostifySuccess('Items are successfully Updated'));
     } else {
-      console.log('hidbii');
+      // console.log('hidbii');
 
       await addDoc(collection(db, 'todos'), {
         title: title.trim(),
@@ -74,7 +74,7 @@ const Form = () => {
   };
   // getting the values from firebase
   useEffect(() => {
-    console.log('use effect run');
+    // console.log('use effect run');
 
     dispatch(setIsLoading(true));
     try {

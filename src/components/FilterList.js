@@ -31,10 +31,10 @@ const FilterList = () => {
     console.log(id);
     dispatch(setActive(id));
     // setFilterItems(todos)
-    console.log(filterItems);
+    // console.log(filterItems);
     const completeItem = filterItems.filter((todo) => todo.isComplete === true);
 
-    console.log(completeItem);
+    // console.log(completeItem);
 
     dispatch(setTodos(completeItem));
   };

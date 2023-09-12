@@ -6,6 +6,7 @@ import {
   setIsConfirm,
   setDeleteId,
   setTostifySuccess,
+  setTostifyError,
 } from '../app/todoSlice';
 import { useDispatch } from 'react-redux';
 
@@ -29,15 +30,11 @@ import Empty from './Empty';
 
 const List = ({ currentItems }) => {
   const dispatch = useDispatch();
-
-  const [isComplete, setIsComplete] = useState(false);
-
-  // const [complete, setComplete] = useState(false);
-
+  // const [isComplete, setIsComplete] = useState(false);
   // const isConfirm=useSelector(selectIsConfirm)
 
   const handleEdit = (id) => {
-    console.log(id);
+    // console.log(id);
     dispatch(setIsEditing(true));
     dispatch(setTitle(id.title));
     dispatch(setEditId(id.id));
@@ -52,22 +49,19 @@ const List = ({ currentItems }) => {
     // await deleteDoc(deleteItem)
   };
 
-  const handleComplete = async (e, id) => {
-    console.log(e.target.checked);
+  const handleComplete = async (todo) => {
+    const completeItem = await doc(db, 'todos', todo.id);
 
-    // setComplete(e.target.value);
-    setIsComplete(e.target.checked);
-
-    const completeItem = await doc(db, 'todos', id);
-
-    await updateDoc(completeItem, { isComplete: isComplete });
+    await updateDoc(completeItem, {
+      isComplete: todo.isComplete ? false : true,
+    });
+    const isComplete = !todo.isComplete;
 
     if (isComplete) {
-      dispatch(setTostifySuccess('The task is completed'));
+      dispatch(setTostifySuccess('This task is completed'));
+    } else if (isComplete === false) {
+      dispatch(setTostifyError('This task is incomplete'));
     }
-    // } else if (!isComplete) {
-    //   dispatch(setTostifyError('Task was incomplete'));
-    // }
   };
 
   return (
@@ -117,7 +111,7 @@ const List = ({ currentItems }) => {
                       <Checkbox
                         size='medium'
                         checked={todo.isComplete}
-                        onChange={(e) => handleComplete(e, todo.id)}
+                        onChange={(e) => handleComplete(todo)}
                         sx={{
                           color: '#fff',
                           backgroundColor: 'transparent',

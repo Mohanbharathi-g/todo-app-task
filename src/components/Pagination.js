@@ -22,7 +22,7 @@ const Pagination = ({ itemsPerPage }) => {
   const endPoint = itemoff + itemsPerPage;
 
   const currentItems = todos.slice(itemoff, endPoint);
-  console.log(currentItems);
+  // console.log(currentItems);
 
   const pageCount = Math.ceil(todos.length / itemsPerPage);
 

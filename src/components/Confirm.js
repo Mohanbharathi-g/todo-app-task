@@ -34,7 +34,7 @@ const Confirm = () => {
       // console.log('cancel')
       dispatch(setIsConfirm(false));
     } else {
-      console.log('bye');
+      // console.log('bye');
     }
   };
   // If user click delete icon, isConfirm value gets true ans show the Box coomponent, the Box component has a confirm message user click okay button the task was deleted.
