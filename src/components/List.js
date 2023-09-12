@@ -77,11 +77,15 @@ const List = ({ currentItems }) => {
       ) : (
         <TableContainer
           sx={{
-            padding: '0 10px',
             marginTop: '2rem',
             width: {
               xs: 350,
               sm: 500,
+            },
+            padding: {
+              xs: '0 10px',
+              sm: '0',
+              md: '0',
             },
           }}
         >
@@ -121,6 +125,7 @@ const List = ({ currentItems }) => {
                           color: '#fff',
                           backgroundColor: 'transparent',
                         }}
+                        inputProps={{ 'aria-label': 'controlled' }}
                       />
                       <Typography
                         variant='body1'
