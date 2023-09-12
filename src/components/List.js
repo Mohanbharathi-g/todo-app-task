@@ -56,7 +56,7 @@ const List = ({ currentItems }) => {
     console.log(e.target.checked);
 
     // setComplete(e.target.value);
-    setIsComplete(e.target.value);
+    setIsComplete(e.target.checked);
 
     const completeItem = await doc(db, 'todos', id);
 
@@ -116,9 +116,6 @@ const List = ({ currentItems }) => {
                     >
                       <Checkbox
                         size='medium'
-                        type='checkbox'
-                        name='complete'
-                        id='completr'
                         checked={todo.isComplete}
                         onChange={(e) => handleComplete(e, todo.id)}
                         sx={{
