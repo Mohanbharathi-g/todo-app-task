@@ -61,9 +61,10 @@ const List = ({ currentItems }) => {
 
     if (isComplete) {
       dispatch(setTostifySuccess('The task is completed'));
-    } else if (!isComplete) {
-      dispatch(setTostifyError('Task was incomplete'));
     }
+    // } else if (!isComplete) {
+    //   dispatch(setTostifyError('Task was incomplete'));
+    // }
   };
 
   return (

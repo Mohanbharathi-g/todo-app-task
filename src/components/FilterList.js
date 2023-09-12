@@ -74,12 +74,10 @@ const FilterList = () => {
         backgroundColor: '#25273c',
         width: {
           xs: 330,
-          sm: 470,
+          sm: 450,
         },
-        marginLeft: {
-          xs: '20px',
-          sm: '0',
-        },
+
+        margin: '2rem auto 1rem auto',
 
         padding: {
           xs: '10px',
