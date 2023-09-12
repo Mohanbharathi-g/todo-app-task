@@ -70,7 +70,7 @@ const FilterList = () => {
   return (
     <Stack
       direction={'row'}
-      justifyContent={'center'}
+      justifyContent={'space-between'}
       alignItems={'center'}
       margin={'auto'}
       width={'500px'}
