@@ -35,7 +35,25 @@ const Pagination = ({ itemsPerPage }) => {
     dispatch(setItemOff(newOffset));
   };
   if (currentItems.length === 0) {
-    dispatch(setItemOff(0));
+    if (todos.length <= 7) {
+      dispatch(setItemOff(0));
+      console.log(currentPage);
+    } else if (todos.length <= 14) {
+      dispatch(setItemOff(7));
+      console.log(currentPage);
+    } else if (todos.length <= 21) {
+      dispatch(setItemOff(14));
+      console.log(currentPage);
+    } else if (todos.length <= 28) {
+      dispatch(setItemOff(21));
+      console.log(currentPage);
+    } else if (todos.length <= 35) {
+      dispatch(setItemOff(28));
+      console.log(currentPage);
+    } else if (todos.length <= 49) {
+      dispatch(setItemOff(35));
+      console.log(currentPage);
+    }
   }
 
   if (currentPage >= pageCount) {
@@ -76,7 +94,7 @@ const Pagination = ({ itemsPerPage }) => {
               onPageChange={handlePageClick}
               pageCount={pageCount}
               pageRangeDisplayed={5}
-              renderOnZeroPageCount={undefined}
+              renderOnZeroPageCount={null}
               breakLabel='...'
               forcePage={currentPage}
               className='pagination'
