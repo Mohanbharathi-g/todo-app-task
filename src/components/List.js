@@ -32,6 +32,8 @@ const List = ({ currentItems }) => {
 
   const [isComplete, setIsComplete] = useState(false);
 
+  // const [complete, setComplete] = useState(false);
+
   // const isConfirm=useSelector(selectIsConfirm)
 
   const handleEdit = (id) => {
@@ -52,7 +54,9 @@ const List = ({ currentItems }) => {
 
   const handleComplete = async (e, id) => {
     console.log(e.target.checked);
-    setIsComplete(!isComplete);
+
+    // setComplete(e.target.value);
+    setIsComplete(e.target.value);
 
     const completeItem = await doc(db, 'todos', id);
 
