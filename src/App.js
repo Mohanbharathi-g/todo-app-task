@@ -1,4 +1,3 @@
-
 import './App.css';
 import Form from './components/Form';
 
@@ -7,21 +6,36 @@ import FilterList from './components/FilterList';
 // import List from './components/List';
 import Pagination from './components/Pagination';
 import Confirm from './components/Confirm';
-
-
+import { Stack } from '@mui/material';
 
 function App() {
   return (
-    <div className='app' style={{width:'full',minHeight:'100vh',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',backgroundColor:'#161722',color:'#9394a5'}}>
-   <div style={{width:'600px',height:'auto',padding:'10px 15px',position:'relative'}}>
-    <Confirm/>
-   <Title/>
-    <Form/>
-    <FilterList/>
-    {/* <List/> */}
-    <Pagination itemsPerPage={7}/>
-   </div>
-    </div>
+    <Stack
+      className='app'
+      sx={{
+        backgroundColor: '#161722',
+        color: '#9394a5',
+        minHeight: '100vh',
+      }}
+    >
+      <Stack
+        sx={{
+          width: {
+            xs: '300',
+            sm: 500,
+          },
+
+          margin: 'auto',
+        }}
+      >
+        <Confirm />
+        <Title />
+        <Form />
+        <FilterList />
+        {/* <List/> */}
+        <Pagination itemsPerPage={7} />
+      </Stack>
+    </Stack>
   );
 }
 

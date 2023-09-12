@@ -26,6 +26,7 @@ const Title = () => {
 
   const handleFilterAll = () => {
     dispatch(setTodos(filterItems));
+    dispatch(setIsOpen(false));
   };
 
   const handleComplete = () => {
@@ -36,6 +37,7 @@ const Title = () => {
     console.log(completeItem);
 
     dispatch(setTodos(completeItem));
+    dispatch(setIsOpen(false));
   };
 
   const handlePending = () => {
@@ -45,33 +47,38 @@ const Title = () => {
     );
 
     dispatch(setTodos(pendingItems));
+    dispatch(setIsOpen(false));
   };
 
   return (
     <Stack
+      justifyContent={'space-between'}
       direction={'row'}
       sx={{
-        display: 'flex',
         color: '#fff',
-        alignItems: 'flex-center',
-        justifyContent: 'space-between',
-        padding: '10px 20px',
-        margin: '2rem 0 2rem 0',
+        padding: '50px 20px 10px 20px',
+        position: 'relative',
       }}
     >
       <Typography
+        variant='h5'
         sx={{
-          fontSize: '2rem',
-          fontWeight: '700',
-          textTransform: 'capitalize',
+          fontSize: {
+            xs: '2rem',
+          },
+          fontWeight: {
+            xs: '700',
+          },
+          textTransform: 'uppercase',
         }}
       >
         T o d o
       </Typography>
-      <div style={{ position: 'relative' }}>
+      <div>
         <RiCalendarTodoLine style={{ fontSize: '2rem' }} onClick={handleOpen} />
         <div style={{ display: isOpen ? 'block' : 'none' }}>
           <Box
+            zIndex={100000}
             sx={{
               width: '100px',
               height: 'auto',
@@ -79,15 +86,15 @@ const Title = () => {
               flexDirection: 'column',
               padding: '0.5rem',
               position: 'absolute',
-              left: '-40px',
-              top: '40px',
+              right: 10,
+              border: '1px solid #fff',
+
               backgroundColor: '#25273c',
               gap: '5px',
               borderRadius: '8px',
               boxShadow: `2px 2px 2px rgba(0, 0, 0, 0.25),'-2px -2px 2px rgba(0, 0, 0, 0.25)`,
               transition: '0.3s',
               translateX: '100px',
-              zIndex: '10',
             }}
           >
             <button

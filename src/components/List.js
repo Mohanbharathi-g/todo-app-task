@@ -15,8 +15,18 @@ import { BsTrash, BsPen } from 'react-icons/bs';
 import { db } from '../utils/firebase/firebase';
 
 import { doc, updateDoc } from 'firebase/firestore';
-import { Button, Table, TableCell, TableRow } from '@mui/material';
+import {
+  Button,
+  Checkbox,
+  Paper,
+  Table,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Typography,
+} from '@mui/material';
 import Empty from './Empty';
+import { CheckBox } from '@mui/icons-material';
 // import Fade from '@mui/material'
 
 const List = ({ currentItems }) => {
@@ -42,7 +52,8 @@ const List = ({ currentItems }) => {
     // await deleteDoc(deleteItem)
   };
 
-  const handleComplete = async (id) => {
+  const handleComplete = async (e, id) => {
+    console.log(e.target.checked);
     setIsComplete(!isComplete);
 
     const completeItem = await doc(db, 'todos', id);
@@ -51,7 +62,7 @@ const List = ({ currentItems }) => {
 
     if (isComplete) {
       dispatch(setTostifySuccess('The task is completed'));
-    } else {
+    } else if (!isComplete) {
       dispatch(setTostifyError('Task was incomplete'));
     }
   };
@@ -61,116 +72,109 @@ const List = ({ currentItems }) => {
       {currentItems.length === 0 ? (
         <Empty />
       ) : (
-        <Table
+        <TableContainer
           sx={{
-            display: 'table',
+            padding: '0 10px',
             marginTop: '2rem',
-            borderCollapse: 'collapse',
+            width: {
+              xs: 350,
+              sm: 500,
+            },
           }}
         >
-          {currentItems &&
-            currentItems.map((todo) => {
-              //   console.log(id)
+          <Table
+            sx={{
+              backgroundColor: 'transparent',
 
-              return (
-                <TableRow
-                  key={todo.id}
-                  sx={{
-                    width: '550px',
-                    margin: 'auto',
-                    backgroundColor: '#25273c',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    padding: '0px 0px',
-                    borderRadius: '8px',
-                    marginTop: '10px',
-                    borderBottom: 'none',
-                  }}
-                >
-                  <TableCell
-                    size='small'
-                    sx={{
-                      width: '50%',
-                      height: '50px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '10px',
-                      borderBottom: 'none',
-                    }}
+              padding: '10px',
+            }}
+          >
+            {currentItems &&
+              currentItems.map((todo, index) => {
+                //   console.log(id)
+
+                return (
+                  <TableRow
+                    key={todo.id}
+                    sx={{ backgroundColor: index % 2 === 0 ? '#25273c' : '' }}
                   >
-                    <input
-                      type='checkbox'
-                      name='complete'
-                      id='completr'
-                      checked={todo.isComplete}
-                      onChange={() => handleComplete(todo.id)}
-                    />
-                    <p
-                      style={{
-                        textDecoration: todo.isComplete ? 'line-through' : '',
-                        fontSize: '1.5rem',
-                        fontWeight: '400',
-                        textTransform: 'capitalize',
-                      }}
-                    >
-                      {todo.title}
-                    </p>
-                  </TableCell>
-                  <TableCell
-                    size='small'
-                    sx={{
-                      width: '25%',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'flex-start',
-                      height: '50px',
-                      textAlign: 'left',
-                      fontSize: '1.15rem',
-                      borderBottom: 'none',
-                    }}
-                  >
-                    <p>{todo.isComplete ? 'Completed' : 'Active'}</p>
-                  </TableCell>
-                  <TableCell
-                    align='center'
-                    size='small'
-                    sx={{
-                      width: '25%',
-                      height: '50px',
-                      display: 'flex',
-                      justifyContent: 'space-evenly',
-                      borderBottom: 'none',
-                    }}
-                  >
-                    <Button
+                    <TableCell
+                      size='small'
                       sx={{
-                        backgroundColor: 'transparent',
-                        border: 'none',
-                        cursor: 'pointer',
+                        borderBottom: 'none',
+                        display: 'flex',
+                        gap: '5px',
+                        alignItems: 'center',
                       }}
-                      onClick={() => handleEdit(todo)}
                     >
-                      <BsPen style={{ fontSize: '1.5rem', color: 'green' }} />
-                    </Button>
-                    <Button
+                      <Checkbox
+                        size='medium'
+                        type='checkbox'
+                        name='complete'
+                        id='completr'
+                        checked={todo.isComplete}
+                        onChange={(e) => handleComplete(e, todo.id)}
+                        sx={{
+                          color: '#fff',
+                          backgroundColor: 'transparent',
+                        }}
+                      />
+                      <Typography
+                        variant='body1'
+                        sx={{
+                          textDecoration: todo.isComplete ? 'line-through' : '',
+                          fontSize: {
+                            sm: '1.25rem',
+                          },
+
+                          fontWeight: '400',
+                          textTransform: 'capitalize',
+                        }}
+                      >
+                        {todo.title}
+                      </Typography>
+                    </TableCell>
+                    <TableCell
+                      size='small'
                       sx={{
-                        backgroundColor: 'transparent',
-                        border: 'none',
-                        cursor: 'pointer',
+                        borderBottom: 'none',
                       }}
-                      onClick={() => handleDelete(todo.id)}
                     >
-                      <BsTrash style={{ fontSize: '1.5rem', color: 'red' }} />
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              );
-            })}
-        </Table>
+                      <Typography
+                        variant='body1'
+                        sx={{
+                          fontSize: {
+                            sm: '1.25rem',
+                          },
+                        }}
+                      >
+                        {todo.isComplete ? 'Completed' : 'Active'}
+                      </Typography>
+                    </TableCell>
+                    <TableCell
+                      align='center'
+                      size='small'
+                      sx={{
+                        borderBottom: 'none',
+                        display: 'flex',
+                      }}
+                    >
+                      <Button onClick={() => handleEdit(todo)}>
+                        <BsPen style={{ fontSize: '1.5rem', color: 'green' }} />
+                      </Button>
+                      <Button onClick={() => handleDelete(todo.id)}>
+                        <BsTrash style={{ fontSize: '1.5rem', color: 'red' }} />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+          </Table>
+        </TableContainer>
       )}
     </>
   );
 };
 
 export default List;
+// #25273c

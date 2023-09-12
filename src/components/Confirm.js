@@ -9,7 +9,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { db } from '../utils/firebase/firebase';
 import { doc, deleteDoc } from 'firebase/firestore';
 
-import { Box, Button, Stack, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogTitle,
+  Stack,
+  Typography,
+} from '@mui/material';
 
 const Confirm = () => {
   // declarattions
@@ -41,66 +49,85 @@ const Confirm = () => {
   return (
     <>
       {isConfirm && (
-        <Box
-          sx={{
-            width: '300px',
-            height: '100px',
-            border: '1px solid #fff',
-            padding: '10px  20px',
-            position: 'fixed',
-            right: '50%',
-            left: '40%',
-            top: '50%',
-            zIndex: '10',
-            backgroundColor: '#25273c',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '20px',
-          }}
-        >
-          <Typography variant='body1' sx={{ fontSize: '18px' }}>
-            Are you sure to delete this Item?
-          </Typography>
-          <Stack direction={'row'} spacing={2}>
+        <Dialog open={isConfirm}>
+          <DialogTitle>Are you sure to delete this task?</DialogTitle>
+          <DialogActions>
             <Button
-              size='small'
-              sx={{
-                padding: '5px 8px',
-                backgroundColor: '#161722',
-                border: 'none',
-                color: '#fff',
-                borderRadius: '8px',
-                cursor: 'pointer',
-                textTransform: 'capitalize',
-                '&hover': {
-                  border: '1px solid #fff',
-                },
-              }}
-              onClick={() => handleSubmit('Okay')}
-              disableRipple
-            >
-              Okay
-            </Button>
-            <Button
-              size='small'
-              sx={{
-                padding: '5px 8px',
-                backgroundColor: '#161722',
-                border: 'none',
-                color: '#fff',
-                borderRadius: '8px',
-                cursor: 'pointer',
-                textTransform: 'capitalize',
-                '&hover': {
-                  border: '1px solid #fff',
-                },
-              }}
+              variant='outlined'
+              color='error'
               onClick={() => handleSubmit('cancel')}
             >
               Cancel
             </Button>
-          </Stack>
-        </Box>
+            <Button
+              variant='outlined'
+              color='success'
+              onClick={() => handleSubmit('Okay')}
+            >
+              OKay
+            </Button>
+          </DialogActions>
+        </Dialog>
+        // <Box
+        //   sx={{
+        //     width: '300px',
+        //     height: '100px',
+        //     border: '1px solid #fff',
+        //     padding: '10px  20px',
+        //     position: 'fixed',
+        //     right: '50%',
+        //     left: '40%',
+        //     top: '50%',
+        //     zIndex: '10',
+        //     backgroundColor: '#25273c',
+        //     display: 'flex',
+        //     flexDirection: 'column',
+        //     gap: '20px',
+        //   }}
+        // >
+        //   <Typography variant='body1' sx={{ fontSize: '18px' }}>
+        //     Are you sure to delete this Item?
+        //   </Typography>
+        //   <Stack direction={'row'} spacing={2}>
+        //     <Button
+        //       size='small'
+        //       sx={{
+        //         padding: '5px 8px',
+        //         backgroundColor: '#161722',
+        //         border: 'none',
+        //         color: '#fff',
+        //         borderRadius: '8px',
+        //         cursor: 'pointer',
+        //         textTransform: 'capitalize',
+        //         '&hover': {
+        //           border: '1px solid #fff',
+        //         },
+        //       }}
+        //       onClick={() => handleSubmit('Okay')}
+        //       disableRipple
+        //     >
+        //       Okay
+        //     </Button>
+        //     <Button
+        //       size='small'
+        //       sx={{
+        //         padding: '5px 8px',
+        //         backgroundColor: '#161722',
+        //         border: 'none',
+        //         color: '#fff',
+        //         borderRadius: '8px',
+        //         cursor: 'pointer',
+        //         textTransform: 'capitalize',
+        //         '&hover': {
+        //           border: '1px solid #fff',
+        //         },
+        //       }}
+        //       onClick={() => handleSubmit('cancel')}
+        //     >
+        //       Cancel
+        //     </Button>
+        //   </Stack>
+        // </Box>
       )}
     </>
   );

@@ -69,63 +69,50 @@ const FilterList = () => {
   // console.log(active)
   return (
     <Stack
-      direction={'row'}
-      justifyContent={'space-between'}
-      alignItems={'center'}
-      margin={'auto'}
-      width={'500px'}
-      backgroundColor={'#25273c'}
-      fontSize={'1.25rem'}
+      marginTop={'3rem'}
       sx={{
-        padding: '10px 30px',
-        fontSize: '1.25rem',
-        borderRadius: '8px',
-        marginTop: '2rem',
-        height: 'auto',
-      }}
-    >
-      <Stack
-        direction={'row'}
-        spacing={4}
-        alignItems={'center'}
-        justifyContent={'space-between'}
-      >
-        {buttonList.map((button) => {
-          return (
-            <Button
-              key={button.id}
-              onClick={() => button.onClick(button.id)}
-              style={{
-                borderBottom: active === button.id ? '2px solid #fff' : '#000',
-              }}
-              sx={{
-                borderRadius: '0',
-                fontSize: '1.25rem',
-                color: '#9394a5',
-                height: '30px',
-                textTransform: 'capitalize',
-              }}
-              disableElevation
-              disableRipple
-            >
-              {button.title}
-            </Button>
-          );
-        })}
-      </Stack>
+        backgroundColor: '#25273c',
+        width: {
+          xs: 330,
+          sm: 470,
+        },
+        marginLeft: {
+          xs: '20px',
+          sm: '0',
+        },
 
-      {/* <Button
-          onClick={handleClear}
-          sx={{
-            borderRadius: '0',
-            fontSize: '1.25rem',
-            color: '#9394a5',
-            height: '30px',
-            textTransform: 'capitalize',
-          }}
-        >
-          Clear All
-        </Button> */}
+        padding: {
+          xs: '10px',
+          sm: '15px',
+        },
+        borderRadius: '8px',
+      }}
+      direction={'row'}
+      spacing={3}
+      justifyContent={'space-evenly'}
+    >
+      {buttonList.map((button) => {
+        return (
+          <Button
+            key={button.id}
+            onClick={() => button.onClick(button.id)}
+            style={{
+              borderBottom: active === button.id ? '2px solid #fff' : '#000',
+            }}
+            sx={{
+              borderRadius: '0',
+              fontSize: '1.25rem',
+              color: '#9394a5',
+              height: '30px',
+              textTransform: 'capitalize',
+            }}
+            disableElevation
+            disableRipple
+          >
+            {button.title}
+          </Button>
+        );
+      })}
     </Stack>
   );
 };

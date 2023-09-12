@@ -111,11 +111,13 @@ const Form = () => {
   return (
     <form
       style={{
-        padding: '10px 20px',
         display: 'flex',
         alignItems: 'center',
+        paddingLeft: '10px',
+
         gap: '5px',
         marginTop: '3.5rem',
+        justifyContent: 'space-between',
       }}
       onSubmit={handleSubmit}
     >
@@ -123,7 +125,14 @@ const Form = () => {
         type='text'
         variant='outlined'
         size='small'
-        sx={{ width: '500px', backgroundColor: '#25273c', margin: '0' }}
+        sx={{
+          backgroundColor: '#25273c',
+          margin: '0',
+          width: {
+            xs: '300px',
+            sm: '500px',
+          },
+        }}
         outline='none'
         placeholder='Create New Todo'
         value={title}
