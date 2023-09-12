@@ -9,15 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { db } from '../utils/firebase/firebase';
 import { doc, deleteDoc } from 'firebase/firestore';
 
-import {
-  Box,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogTitle,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Button, Dialog, DialogActions, DialogTitle } from '@mui/material';
 
 const Confirm = () => {
   // declarattions

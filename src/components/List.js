@@ -18,7 +18,6 @@ import { doc, updateDoc } from 'firebase/firestore';
 import {
   Button,
   Checkbox,
-  Paper,
   Table,
   TableCell,
   TableContainer,
@@ -26,7 +25,7 @@ import {
   Typography,
 } from '@mui/material';
 import Empty from './Empty';
-import { CheckBox } from '@mui/icons-material';
+// import { CheckBox } from '@mui/icons-material';
 // import Fade from '@mui/material'
 
 const List = ({ currentItems }) => {
